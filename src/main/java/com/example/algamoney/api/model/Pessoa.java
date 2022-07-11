@@ -2,6 +2,7 @@ package com.example.algamoney.api.model;
 
 import java.util.Objects;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,23 +12,31 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "categoria")
-public class Categoria {
+@Table(name = "pessoa")
+public class Pessoa {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
 	
 	@NotBlank
-	@Size(min = 3, max = 30)
+	@Size(min=3, max = 30)
 	private String nome;
-
 	
-	public Long getCodigo() {
+	
+	private Boolean ativo;
+	
+	@Embedded
+	private Endereco endereco;
+	
+	
+	
+
+	public Long getId() {
 		return codigo;
 	}
-	public void setCodigo(Long codigo) {
-		this.codigo = codigo;
+	public void setId(Long id) {
+		this.codigo = id;
 	}
 	public String getNome() {
 		return nome;
@@ -35,7 +44,19 @@ public class Categoria {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
+	public Boolean getAtivo() {
+		return ativo;
+	}
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
+	}
+	public Endereco getEndereco() {
+		return endereco;
+	}
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(codigo);
@@ -48,7 +69,11 @@ public class Categoria {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Categoria other = (Categoria) obj;
+		Pessoa other = (Pessoa) obj;
 		return Objects.equals(codigo, other.codigo);
 	}
+	
+	
+	
+
 }
