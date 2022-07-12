@@ -10,7 +10,7 @@ codigo_categoria BIGINT(20) NOT NULL,
 codigo_pessoa BIGINT(20) NOT NULL,
  FOREIGN KEY (codigo_categoria) REFERENCES categoria(codigo),
  FOREIGN KEY (codigo_pessoa) REFERENCES pessoa(codigo)
-)ENGINE=InnoBD DEFAULT CHARSET = UTF8;
+)ENGINE=InnoDB DEFAULT CHARSET = UTF8;
 
 
 INSERT INTO lancamento (descricao, data_vencimento, data_pagamento, valor, observacao, tipo, codigo_categoria, codigo_pessoa) values ('Salário mensal', '2018-01-27', null, 6500.00, 'Distribuição de lucros', 'RECEITA', 1, 1);

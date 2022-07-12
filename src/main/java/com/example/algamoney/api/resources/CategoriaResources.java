@@ -32,14 +32,12 @@ public class CategoriaResources {
 
 	
 	@GetMapping
-	
 	public List<Categoria> listar(){
 		return categoriaRepository.findAll();
 
 	}
 	
 	@PostMapping
-	
 	public ResponseEntity<Categoria> criar(@Valid @RequestBody Categoria categoria, HttpServletResponse reponse) {
 		
 		Categoria categoriaSalva = categoriaRepository.save(categoria);

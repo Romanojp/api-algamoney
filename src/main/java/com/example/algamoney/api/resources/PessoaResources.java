@@ -54,12 +54,12 @@ public class PessoaResources {
 	public ResponseEntity<Pessoa> criar(@Valid @RequestBody Pessoa pessoa, HttpServletResponse response) {
 	Pessoa pessoaSalva = pessoaRepository.save(pessoa);
 	
-	publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaSalva.getId()));
+	publisher.publishEvent(new RecursoCriadoEvent(this, response, pessoaSalva.getCodigo()));
 		
 	    return ResponseEntity.status(HttpStatus.CREATED).body(pessoaSalva) ; 
 	}
 	
-	@DeleteMapping("/{/codigo}")
+	@DeleteMapping("/{codigo}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void remover(@PathVariable Long codigo) {
 		pessoaRepository.deleteById(codigo);
