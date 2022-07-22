@@ -22,9 +22,10 @@ public class LancamentoService {
 	@Autowired
 	private LancamentoRepository lancamentoRepository;
 
-	@SuppressWarnings("deprecation")
+	
 	public Lancamento salvar(@Valid Lancamento lancamento) throws PessoaInexistenteOuInativaException {
 		
+		@SuppressWarnings("deprecation")
 		Pessoa pessoa = pessoaRepository.getOne(lancamento.getPessoa().getCodigo());
 			if (pessoa == null || pessoa.isInativo()) {
 				throw new PessoaInexistenteOuInativaException();
