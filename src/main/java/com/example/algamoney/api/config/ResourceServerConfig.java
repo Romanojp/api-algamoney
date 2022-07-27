@@ -56,7 +56,7 @@ public class ResourceServerConfig extends WebSecurityConfigurerAdapter{
                 .oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwtAuthenticationConverter());
     }
 
- @Bean
+      @Bean
     public JwtDecoder jwtDecoder() {
         var secretKey = new SecretKeySpec("3032885ba9cd6621bcc4e7d6b6c35c2b".getBytes(), "HmacSHA256");
 
